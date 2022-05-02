@@ -24,9 +24,14 @@ $RECYCLE.BIN/
 *.lnk
 # This .gitignore file should be placed at the root of your Unity project directory
 #
+# =============== #
+# Unity generated #
+# =============== #
+Temp/
+Library/
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-[Ll]ibrary/
+/[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
