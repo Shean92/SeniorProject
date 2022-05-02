@@ -25,6 +25,6 @@ public class EnemyHealthManager : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("dead");
+        Destroy(this.gameObject);
     }
 }

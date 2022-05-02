@@ -287,6 +287,7 @@ MonoBehaviour:
     m_Bits: 128
   attackDamage: 1
   bloodSplatter: {fileID: 1761726668}
+  attackRate: 1.75
 --- !u!95 &158809948
 Animator:
   serializedVersion: 3
@@ -615,7 +616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47517ffcb62df794fb45a10095d06968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 2
+  maxHealth: 10
 --- !u!212 &1397015375
 SpriteRenderer:
   m_ObjectHideFlags: 0

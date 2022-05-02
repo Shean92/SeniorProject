@@ -13,13 +13,16 @@ public class playerCombat : MonoBehaviour
     public int attackDamage = 1;
 
     public ParticleSystem bloodSplatter;
+    public float attackRate = 2f;
+    float nextAttackTime = 0f;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && Time.time >= nextAttackTime)
         {
             Attack();
+            nextAttackTime = Time.time + 1f / attackRate;
         }
 
     }
@@ -33,7 +36,7 @@ public class playerCombat : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyHealthManager>().TakeDamage(attackDamage);
-            bloodSplatter.Emit(1);
+            bloodSplatter.Emit(20);
         }
     }
 
