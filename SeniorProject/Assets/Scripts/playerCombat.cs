@@ -38,6 +38,7 @@ public class playerCombat : MonoBehaviour
             enemy.GetComponent<EnemyHealthManager>().TakeDamage(attackDamage);
             bloodSplatter.Emit(20);
         }
+
     }
 
     private void OnDrawGizmosSelected()
