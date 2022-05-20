@@ -15,7 +15,6 @@ public class FOVEnemyScript : MonoBehaviour
 
     private void Awake()
     {
-        militaryAI = GetComponent<MilitaryAI>();
         StartCoroutine(FOVCheck());
     }
 

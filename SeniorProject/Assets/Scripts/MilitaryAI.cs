@@ -5,31 +5,41 @@ using UnityEngine;
 public class MilitaryAI : MonoBehaviour
 {
     public GameObject playerRef;
+    public Transform shootPosition;
     public FOVEnemyScript fov;
+    public AiMovementScript move;
+    public ShootingScript shoot;
+    public RotateToTarget rotate;
+    public RotateToTarget shootingPoint;
 
     public float rotationSpeed;
+    public float moveSpeed;
+    public float timeBetweenShots;
+    public float lastTimeShot;
 
     private void Awake()
     {
-        fov = GetComponent<FOVEnemyScript>();
         playerRef = GameObject.FindGameObjectWithTag("Player");
+        move.InheretProperties(rotate, moveSpeed, rotationSpeed, "Military");
     }
-
+    // change player for any Target with Zombie layer
     private void Update()
     {
         if (fov.CanSeePlayer)
         {
-            RotateTowardsTarget();
-        }
-    }
+            move.TargetAcquired(playerRef);
+            rotate.RotateTowardsTarget(playerRef.transform.position, rotationSpeed);
+            shootingPoint.RotateTowardsTarget(playerRef.transform.position, rotationSpeed);
 
-    private void RotateTowardsTarget()
-    {
-        var offset = -90f;
-        Vector2 direction = playerRef.transform.position - transform.position;
-        direction.Normalize();
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(angle + offset, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+            if (Time.time > lastTimeShot)
+            {
+                lastTimeShot = Time.time + timeBetweenShots;
+                shoot.Shoot(shootPosition);
+            }
+        }
+        else
+        {
+            move.TargetAcquired(null);
+        }
     }
 }
