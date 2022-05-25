@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MilitaryAI : MonoBehaviour
 {
-    public GameObject playerRef;
+    public GameObject target;
     public Transform shootPosition;
     public FOVEnemyScript fov;
     public AiMovementScript move;
@@ -19,7 +19,7 @@ public class MilitaryAI : MonoBehaviour
 
     private void Awake()
     {
-        playerRef = GameObject.FindGameObjectWithTag("Player");
+        //target = GameObject.FindGameObjectWithTag("Player");
         move.InheretProperties(rotate, moveSpeed, rotationSpeed, "Military");
     }
     // change player for any Target with Zombie layer
@@ -27,9 +27,10 @@ public class MilitaryAI : MonoBehaviour
     {
         if (fov.CanSeePlayer)
         {
-            move.TargetAcquired(playerRef);
-            rotate.RotateTowardsTarget(playerRef.transform.position, rotationSpeed);
-            shootingPoint.RotateTowardsTarget(playerRef.transform.position, rotationSpeed);
+            move.TargetAcquired(true);
+            move.SetTarget(target);
+            rotate.RotateTowardsTarget(target.transform.position, rotationSpeed);
+            shootingPoint.RotateTowardsTarget(target.transform.position, rotationSpeed);
 
             if (Time.time > lastTimeShot)
             {
@@ -39,7 +40,12 @@ public class MilitaryAI : MonoBehaviour
         }
         else
         {
-            move.TargetAcquired(null);
+            move.TargetAcquired(false);
         }
+    }
+
+    public void TargetFound(GameObject target)
+    {
+        this.target = target;
     }
 }

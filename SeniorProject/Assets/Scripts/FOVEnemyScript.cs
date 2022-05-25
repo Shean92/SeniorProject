@@ -35,15 +35,22 @@ public class FOVEnemyScript : MonoBehaviour
 
         if (rangeCheck.Length > 0)
         {
-            Transform target = rangeCheck[0].transform;
-            Vector2 directionToTarget = (target.position - transform.position).normalized;
+            //When player enters the circle enemy instantly turns toward player 
+            //This is a problem with the heirarchy of objects referencing the player as always being above any other zombies
+            //What I was expecting was the list to be made based on the object entering the yellow triangle field of view in order of appearance
+            //This script takes all objects in the targetlayer that are in the circle and makes a list of them every frame in the scene heirarchy.
+            GameObject target = rangeCheck[0].gameObject;
+            Vector2 directionToTarget = (target.transform.position - transform.position).normalized;
 
             if (Vector2.Angle(transform.up, directionToTarget) < angle / 2)
             {
-                float distanceToTarget = Vector2.Distance(transform.position, target.position);
+                float distanceToTarget = Vector2.Distance(transform.position, target.transform.position);
 
                 if (!Physics2D.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionLayer))
+                {
                     CanSeePlayer = true;
+                    GetComponent<MilitaryAI>().TargetFound(target);
+                }
                 else
                     CanSeePlayer = false;
             }
@@ -69,7 +76,7 @@ public class FOVEnemyScript : MonoBehaviour
         if (CanSeePlayer)
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawLine(transform.position, militaryAI.playerRef.transform.position);
+            Gizmos.DrawLine(transform.position, militaryAI.target.transform.position);
         }
     }
 
