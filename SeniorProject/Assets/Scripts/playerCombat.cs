@@ -35,9 +35,10 @@ public class playerCombat : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyHealthManager>().TakeDamage(attackDamage);
+            enemy.GetComponent<HealthManagerScript>().TakeDamage(attackDamage);
             bloodSplatter.Emit(20);
         }
+
     }
 
     private void OnDrawGizmosSelected()
