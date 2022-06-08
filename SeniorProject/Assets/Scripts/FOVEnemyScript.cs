@@ -8,12 +8,9 @@ public class FOVEnemyScript : MonoBehaviour
     [Range(1, 360)] public float angle = 45f;
     public LayerMask targetLayer;
     public LayerMask obstructionLayer;
-    private GameObject target;
+    public GameObject target;
     private float distanceToTarget;
-
-    public MilitaryAI militaryAI;
-
-    public bool CanSeePlayer { get; private set; }
+    public bool canSeeTarget { get; private set; }
 
     private void Awake()
     {
@@ -40,18 +37,21 @@ public class FOVEnemyScript : MonoBehaviour
             //What I need to do is compare the distance between each object in FoV and pick the one that is the closest.
             for (int i = 0; i < rangeCheck.Length; i++)
             {
+                float tempDistanceToTarget;
                 //get current distance, check if last object was further or not, if further then get current object.
                 if(i == 0)
                 {
                     target = rangeCheck[0].gameObject;
+                    distanceToTarget = Vector2.Distance(transform.position, rangeCheck[i].transform.position);
                 }
                 else {
-                    distanceToTarget = Vector2.Distance(transform.position, rangeCheck[i].transform.position);
+                    tempDistanceToTarget = Vector2.Distance(transform.position, rangeCheck[i].transform.position);
                 
-                    if(distanceToTarget <  Vector2.Distance(transform.position, target.transform.position))
+                    if(tempDistanceToTarget <  Vector2.Distance(transform.position, target.transform.position))
                     {
                         target = rangeCheck[i].gameObject;
-                    }
+                        distanceToTarget = Vector2.Distance(transform.position, rangeCheck[i].transform.position);
+                    }                    
                 }
             }
             
@@ -61,17 +61,16 @@ public class FOVEnemyScript : MonoBehaviour
             {
                 if (!Physics2D.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionLayer))
                 {
-                    CanSeePlayer = true;
-                    GetComponent<MilitaryAI>().TargetFound(target);
+                    canSeeTarget = true;
                 }
                 else
-                    CanSeePlayer = false;
+                    canSeeTarget = false;
             }
             else
-                CanSeePlayer = false;
+                canSeeTarget = false;
         }
-        else if (CanSeePlayer)
-            CanSeePlayer = false;
+        else if (canSeeTarget)
+            canSeeTarget = false;
     }
 
     private void OnDrawGizmos()
@@ -86,10 +85,10 @@ public class FOVEnemyScript : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + angle01 * radius);
         Gizmos.DrawLine(transform.position, transform.position + angle02 * radius);
 
-        if (CanSeePlayer)
+        if (canSeeTarget)
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawLine(transform.position, militaryAI.target.transform.position);
+            Gizmos.DrawLine(transform.position, target.transform.position);
         }
     }
 

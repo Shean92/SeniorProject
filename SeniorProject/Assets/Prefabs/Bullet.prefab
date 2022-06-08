@@ -4964,6 +4964,9 @@ MonoBehaviour:
   damage: 1
   destroyTime: 0.8
   heatSeeking: 0
+  friendlies:
+    serializedVersion: 2
+    m_Bits: 128
   rb: {fileID: 433882955}
   bloodSplatter: {fileID: 3451696581315097056}
 --- !u!50 &433882955
