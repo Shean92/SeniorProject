@@ -8,9 +8,16 @@ public class GameManager : MonoBehaviour
  public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
-
+    public GameObject gameOverUI;
+    public HealthManagerScript player;
     void Update() 
     {
+        
+        if (player.currentHealth <= 0)
+        {
+            gameOverUI.SetActive(true);
+            Time.timeScale = 0f;
+        }
         
         if (Input.GetKeyDown("escape"))
         
@@ -51,5 +58,7 @@ public class GameManager : MonoBehaviour
         Debug.Log ("QUIT!");
         Application.Quit();
     }
+
+    
 }
 
