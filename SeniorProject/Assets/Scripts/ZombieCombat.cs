@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerCombat : MonoBehaviour
+public class ZombieCombat : MonoBehaviour
 {
     public Animator animator;
 
@@ -10,7 +10,7 @@ public class playerCombat : MonoBehaviour
     public float attackRange = .5f;
     public LayerMask enemyLayers;
 
-    public int attackDamage = 1;
+    public float attackDamage = 1;
 
     public ParticleSystem bloodSplatter;
     public float attackRate = 2f;
@@ -20,7 +20,7 @@ public class playerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0) && Time.time >= nextAttackTime)
+        if (Time.time >= nextAttackTime)
         {
             Attack();
             nextAttackTime = Time.time + 1f / attackRate;
@@ -36,7 +36,6 @@ public class playerCombat : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<HealthManagerScript>().TakeDamage(attackDamage);
             HealthManagerScript enemyHealth = enemy.GetComponent<HealthManagerScript>();
             enemyHealth.TakeDamage(attackDamage);
             enemyHealth.zombiefied = true;

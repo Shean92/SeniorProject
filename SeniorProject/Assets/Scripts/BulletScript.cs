@@ -8,6 +8,7 @@ public class BulletScript : MonoBehaviour
     public int damage;
     public float destroyTime;
     public bool heatSeeking = false;
+    public LayerMask friendlies;
     public Rigidbody2D rb;
     public ParticleSystem bloodSplatter;
 
@@ -25,7 +26,7 @@ public class BulletScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.GetComponent<HealthManagerScript>())
+        if (other.gameObject.GetComponent<HealthManagerScript>() && other.gameObject.layer != friendlies.value)
         {
             other.gameObject.GetComponent<HealthManagerScript>().TakeDamage(damage);
             bloodSplatter.Emit(20);

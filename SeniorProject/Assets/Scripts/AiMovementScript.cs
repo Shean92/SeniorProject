@@ -32,22 +32,16 @@ public class AiMovementScript : MonoBehaviour
                 case "Civilian":
                     CivilianMove();
                     break;
-
+                default:
+                    Wander();
+                    break;
             }
         }
         else
         {
             Wander();
-        };
-        if (rb.velocity.magnitude > speed)
-        {
-            //Include nav mesh A*
-            //When the player runs into the enemy, the rotation and movement get all messed up for some reason.
-            rb.velocity = rb.velocity.normalized * speed;
         }
     }
-    // Zombie Movement
-    // Civilian Run script
 
     public void InheretProperties(RotateToTarget rotate, float speed, float rotationSpeed, string creatureType)
     {
@@ -56,6 +50,7 @@ public class AiMovementScript : MonoBehaviour
         this.rotationSpeed = rotationSpeed;
         this.creatureType = creatureType;
     }
+
     private void Wander()
     {
         if (Vector3.Distance(rb.transform.position, movePosition) <= 1)
@@ -85,7 +80,10 @@ public class AiMovementScript : MonoBehaviour
 
     private void ZombieMove()
     {
-
+        if (Vector3.Distance(transform.position, target.transform.position) > 0.5)
+        {
+            MoveForward();
+        }
     }
 
     private void CivilianMove()

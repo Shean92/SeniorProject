@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class HealthManagerScript : MonoBehaviour
 {
-    public int maxHealth = 10;
-    public int currentHealth;
+    public float maxHealth = 10;
+    public float currentHealth;
     public bool immortal = false;
+    public bool isZombie = false;
+    public bool zombiefied = false;
+
+    public GameObject zombie;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,18 +18,22 @@ public class HealthManagerScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        Debug.Log(currentHealth);
         if (currentHealth <= 0 && !immortal)
         {
+            immortal = true;
             Die();
         }
     }
 
     void Die()
     {
+        if(!isZombie)
+        {
+            Instantiate(zombie, gameObject.transform.position, gameObject.transform.rotation);
+        }
         Destroy(this.gameObject);
     }
 }

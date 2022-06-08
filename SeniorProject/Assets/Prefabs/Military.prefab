@@ -40,7 +40,7 @@ Transform:
   - {fileID: 4698242264895964238}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4698242264653727366
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -131,8 +131,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 1
+  m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -155,6 +155,7 @@ MonoBehaviour:
   shootPosition: {fileID: 4698242264895964238}
   fov: {fileID: 4698242264653727389}
   move: {fileID: 4698242264653727388}
+  health: {fileID: 4698242264653727377}
   shoot: {fileID: 4698242264653727367}
   rotate: {fileID: 4698242264653727391}
   shootingPoint: {fileID: 4698242264895964225}
@@ -182,7 +183,7 @@ MonoBehaviour:
   obstructionLayer:
     serializedVersion: 2
     m_Bits: 1024
-  militaryAI: {fileID: 4698242264653727386}
+  target: {fileID: 0}
 --- !u!114 &4698242264653727391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +212,9 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   immortal: 0
+  isZombie: 0
+  zombiefied: 0
+  zombie: {fileID: 1676422788217897298, guid: f3aba47d04c1e90419bee57ab1323884, type: 3}
 --- !u!114 &4698242264653727367
 MonoBehaviour:
   m_ObjectHideFlags: 0
