@@ -88,7 +88,7 @@ public class AiMovementScript : MonoBehaviour
 
     private void CivilianMove()
     {
-
+        MoveBackward();
     }
 
     public void TargetAcquired(bool targeting)
