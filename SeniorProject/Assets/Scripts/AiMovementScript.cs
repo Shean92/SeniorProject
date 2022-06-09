@@ -14,12 +14,17 @@ public class AiMovementScript : MonoBehaviour
     private RotateToTarget rotate;
     public float wanderTime;
     private float lastTimeWandered;
-    public float distance;
+    public float wanderDistance;
 
     // Wander Script General to all Ai
+    void Start()
+    {
+        movePosition = gameObject.transform.position;
+    }
+
     void FixedUpdate()
     {
-        if (targeting)
+        if (targeting && target != null)
         {
             switch (creatureType)
             {
@@ -53,10 +58,10 @@ public class AiMovementScript : MonoBehaviour
 
     private void Wander()
     {
-        if (Vector3.Distance(rb.transform.position, movePosition) <= 1)
+        if (Vector3.Distance(rb.transform.position, movePosition) <= 1 || Time.time > (lastTimeWandered + wanderTime + wanderTime))
         {
-            movePosition.x = Random.Range(rb.position.x - distance, rb.position.x + distance);
-            movePosition.y = Random.Range(rb.position.y - distance, rb.position.y + distance);
+            movePosition.x = Random.Range(rb.position.x - wanderDistance, rb.position.x + wanderDistance);
+            movePosition.y = Random.Range(rb.position.y - wanderDistance, rb.position.y + wanderDistance);
             lastTimeWandered = Time.time + wanderTime;
         }
         else

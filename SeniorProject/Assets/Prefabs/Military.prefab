@@ -242,8 +242,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 4698242264653727384}
   movePosition: {x: 0, y: 0}
-  wanderTime: 1
-  distance: 5
+  wanderTime: 1.5
+  wanderDistance: 5
 --- !u!1 &4698242264802940777
 GameObject:
   m_ObjectHideFlags: 0
