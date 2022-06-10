@@ -20,7 +20,7 @@ public class playerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0) && Time.time >= nextAttackTime)
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time >= nextAttackTime)
         {
             Attack();
             nextAttackTime = Time.time + 1f / attackRate;
@@ -32,16 +32,16 @@ public class playerCombat : MonoBehaviour
     {
         animator.SetTrigger("Attack");
 
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        // Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
-        foreach (Collider2D enemy in hitEnemies)
-        {
-            enemy.GetComponent<HealthManagerScript>().TakeDamage(attackDamage);
-            HealthManagerScript enemyHealth = enemy.GetComponent<HealthManagerScript>();
-            enemyHealth.TakeDamage(attackDamage);
-            enemyHealth.zombiefied = true;
-            bloodSplatter.Emit(20);
-        }
+        // foreach (Collider2D enemy in hitEnemies)
+        // {
+        //     enemy.GetComponent<HealthManagerScript>().TakeDamage(attackDamage);
+        //     HealthManagerScript enemyHealth = enemy.GetComponent<HealthManagerScript>();
+        //     enemyHealth.TakeDamage(attackDamage);
+        //     enemyHealth.zombiefied = true;
+        //     bloodSplatter.Emit(20);
+        // }
 
     }
 

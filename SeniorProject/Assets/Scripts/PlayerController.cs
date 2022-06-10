@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
-    public float health;
 
     public Rigidbody2D rb;
     public Camera cam;
