@@ -30,10 +30,13 @@ public class HealthManagerScript : MonoBehaviour
 
     void Die()
     {
-        if(!isZombie)
+        if (!isZombie)
         {
             Instantiate(zombie, gameObject.transform.position, gameObject.transform.rotation);
         }
-        Destroy(this.gameObject);
+        if (gameObject != null)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
