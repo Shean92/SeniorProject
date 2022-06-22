@@ -6,12 +6,18 @@ public class playerCombat : MonoBehaviour
 {
     public Animator animator;
     public Transform attackPoint;
-    public float attackRange = .5f;
+    public float attackRange;
     public LayerMask enemyLayers;
-    public int attackDamage = 1;
+    public float attackDamage;
     public ParticleSystem bloodSplatter;
-    public float attackRate = 2f;
-    float nextAttackTime = 0f;
+    public float attackRate;
+    public float nextAttackTime;
+    public bool canShoot;
+    private float nextShootTime;
+    public float shootRate;
+    public Transform shootPosition;
+    public ShootingScript shoot;
+    public HealthManagerScript playerHealth;
 
     // Update is called once per frame
     void Update()
@@ -20,6 +26,12 @@ public class playerCombat : MonoBehaviour
         {
             Attack();
             nextAttackTime = Time.time + 1f / attackRate;
+        }
+
+        if (Input.GetMouseButton(1) && Time.time >= nextShootTime && canShoot)
+        {
+            shoot.Shoot(shootPosition);
+            nextShootTime = Time.time + 1f / shootRate;
         }
 
         //if we choose to not use the mouse 
@@ -42,10 +54,10 @@ public class playerCombat : MonoBehaviour
             enemy.GetComponent<HealthManagerScript>().TakeDamage(attackDamage);
             HealthManagerScript enemyHealth = enemy.GetComponent<HealthManagerScript>();
             enemyHealth.TakeDamage(attackDamage);
+            playerHealth.TakeDamage(-attackDamage);
             enemyHealth.zombiefied = true;
             bloodSplatter.Emit(20);
         }
-
     }
 
     private void OnDrawGizmosSelected()
