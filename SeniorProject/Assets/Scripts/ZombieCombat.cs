@@ -34,12 +34,18 @@ public class ZombieCombat : MonoBehaviour
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
-        foreach (Collider2D enemy in hitEnemies)
+        if (hitEnemies != null)
         {
-            HealthManagerScript enemyHealth = enemy.GetComponent<HealthManagerScript>();
-            enemyHealth.TakeDamage(attackDamage);
-            enemyHealth.zombiefied = true;
-            bloodSplatter.Emit(20);
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                if (enemy != null && enemy.tag != "Bullet")
+                {
+                    HealthManagerScript enemyHealth = enemy.GetComponent<HealthManagerScript>();
+                    enemyHealth.TakeDamage(attackDamage);
+                    enemyHealth.zombiefied = true;
+                    bloodSplatter.Emit(20);
+                }
+            }
         }
 
     }

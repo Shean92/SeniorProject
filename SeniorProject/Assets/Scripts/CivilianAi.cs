@@ -11,15 +11,23 @@ public class CivilianAi : MonoBehaviour
 
     public float rotationSpeed;
     public float moveSpeed;
+    public float targetProximity;
+    public float chillTime;
 
     private void Awake()
     {
-        move.InheretProperties(rotate, moveSpeed, rotationSpeed, "Civilian");
+        move.InheretProperties(rotate, rotationSpeed, "Civilian", targetProximity);
     }
     private void Update()
     {
+        if (Time.time > chillTime)
+        {
+            move.getSpeed(moveSpeed);
+        }
+
         if (fov.canSeeTarget)
         {
+            move.getSpeed(moveSpeed);
             target = fov.target;
             move.TargetAcquired(true);
             move.SetTarget(target);

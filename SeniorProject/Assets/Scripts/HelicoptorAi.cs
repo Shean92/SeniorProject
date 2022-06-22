@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MilitaryAI : MonoBehaviour
+public class HelicoptorAi : MonoBehaviour
 {
     public GameObject target;
     public Transform shootPosition;
-    public FOVEnemyScript fov;
     public AiMovementScript move;
     public HealthManagerScript health;
     public ShootingScript shoot;
@@ -22,35 +21,25 @@ public class MilitaryAI : MonoBehaviour
 
     private void Awake()
     {
+        target = GameObject.FindWithTag("Player");
+        move.getSpeed(0);
         move.InheretProperties(rotate, rotationSpeed, "Military", targetProximity);
-        health.isZombie = false;
+        move.TargetAcquired(true);
+        move.SetTarget(target);
     }
     private void Update()
     {
-
         if (Time.time > chillTime)
         {
             move.getSpeed(moveSpeed);
         }
+        rotate.RotateTowardsTarget(target.transform.position, rotationSpeed);
+        shootingPoint.RotateTowardsTarget(target.transform.position, rotationSpeed);
 
-        if (fov.canSeeTarget)
+        if (Time.time > lastTimeShot)
         {
-            move.getSpeed(moveSpeed);
-            target = fov.target;
-            move.TargetAcquired(true);
-            move.SetTarget(target);
-            rotate.RotateTowardsTarget(target.transform.position, rotationSpeed);
-            shootingPoint.RotateTowardsTarget(target.transform.position, rotationSpeed);
-
-            if (Time.time > lastTimeShot)
-            {
-                lastTimeShot = Time.time + timeBetweenShots;
-                shoot.Shoot(shootPosition);
-            }
-        }
-        else
-        {
-            move.TargetAcquired(false);
+            lastTimeShot = Time.time + timeBetweenShots;
+            shoot.Shoot(shootPosition);
         }
     }
 }
