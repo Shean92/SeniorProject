@@ -11,15 +11,18 @@ public class ZombieAi : MonoBehaviour
 
     public float rotationSpeed;
     public float moveSpeed;
+    public float targetProximity;
 
     private void Awake()
     {
-        move.InheretProperties(rotate, moveSpeed, rotationSpeed, "Zombie");
+        move.InheretProperties(rotate, rotationSpeed, "Zombie", targetProximity);
+        move.getSpeed(moveSpeed);
     }
     private void Update()
     {
         if (fov.canSeeTarget)
         {
+
             target = fov.target;
             move.TargetAcquired(true);
             move.SetTarget(target);

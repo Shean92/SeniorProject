@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1484116037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1484116038}
+  m_Layer: 9
+  m_Name: ShootingPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1484116038
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484116037}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7554754442447871498}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7554754441338540952
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,6 +240,7 @@ GameObject:
   - component: {fileID: 7554754442447871499}
   - component: {fileID: 7554754442447871496}
   - component: {fileID: 7554754442447871501}
+  - component: {fileID: 1010609898}
   m_Layer: 9
   m_Name: Player Character
   m_TagString: Player
@@ -233,6 +264,7 @@ Transform:
   - {fileID: 7554754441338540953}
   - {fileID: 2003936599013337619}
   - {fileID: 1913880744}
+  - {fileID: 1484116038}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -277,7 +309,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: c39f268c128e62e4b9aa14999915e637, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.8313489, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -363,7 +395,13 @@ MonoBehaviour:
     m_Bits: 128
   attackDamage: 1
   bloodSplatter: {fileID: 1125152355187492346}
-  attackRate: 1.75
+  attackRate: 2
+  nextAttackTime: 0
+  canShoot: 1
+  shootRate: 1
+  shootPosition: {fileID: 1484116038}
+  shoot: {fileID: 1010609898}
+  playerHealth: {fileID: 7554754442447871501}
 --- !u!114 &7554754442447871496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,12 +429,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bcba0c7c3e951e4389312b806e54fab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 20
   currentHealth: 0
   immortal: 1
   isZombie: 1
   zombiefied: 0
+  isVehicle: 0
+  explosion: {fileID: 0}
+  smoke: {fileID: 0}
   zombie: {fileID: 1676422788217897298, guid: f3aba47d04c1e90419bee57ab1323884, type: 3}
+--- !u!114 &1010609898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7554754442447871493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b27145dbc7a327546858b992262b96f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 5520639851429474975, guid: a15fb491a43bb24468edd4b848edfaf2, type: 3}
 --- !u!1001 &508889886902457129
 PrefabInstance:
   m_ObjectHideFlags: 0

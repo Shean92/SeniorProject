@@ -15,11 +15,14 @@ public class AiMovementScript : MonoBehaviour
     public float wanderTime;
     private float lastTimeWandered;
     public float wanderDistance;
+    private float targetProximity;
+    private GameObject player;
 
     // Wander Script General to all Ai
     void Start()
     {
         movePosition = gameObject.transform.position;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void FixedUpdate()
@@ -38,22 +41,17 @@ public class AiMovementScript : MonoBehaviour
                     CivilianMove();
                     break;
                 default:
-                    Wander();
                     break;
             }
         }
         else
         {
+            if (creatureType == "Zombie")
+            {
+                ZombieHorde();
+            }
             Wander();
         }
-    }
-
-    public void InheretProperties(RotateToTarget rotate, float speed, float rotationSpeed, string creatureType)
-    {
-        this.rotate = rotate;
-        this.speed = speed;
-        this.rotationSpeed = rotationSpeed;
-        this.creatureType = creatureType;
     }
 
     private void Wander()
@@ -71,13 +69,28 @@ public class AiMovementScript : MonoBehaviour
         MoveForward();
     }
 
+    private void ZombieHorde()
+    {
+        if (Vector3.Distance(rb.transform.position, movePosition) <= 1 || Time.time > (lastTimeWandered + wanderTime + wanderTime))
+        {
+            movePosition.x = Random.Range(player.transform.position.x - wanderDistance, rb.position.x + wanderDistance);
+            movePosition.y = Random.Range(player.transform.position.y - wanderDistance, rb.position.y + wanderDistance);
+            lastTimeWandered = Time.time + wanderTime;
+        }
+        else
+        {
+            rotate.RotateTowardsTarget(movePosition, rotationSpeed);
+        }
+        MoveForward();
+    }
+
     private void MilitaryMove()
     {
-        if (Vector3.Distance(transform.position, target.transform.position) > 5)
+        if (Vector3.Distance(transform.position, target.transform.position) > targetProximity)
         {
             MoveForward();
         }
-        if (Vector3.Distance(transform.position, target.transform.position) < 5)
+        if (Vector3.Distance(transform.position, target.transform.position) < targetProximity)
         {
             MoveBackward();
         }
@@ -85,7 +98,7 @@ public class AiMovementScript : MonoBehaviour
 
     private void ZombieMove()
     {
-        if (Vector3.Distance(transform.position, target.transform.position) > 0.5)
+        if (Vector3.Distance(transform.position, target.transform.position) > targetProximity)
         {
             MoveForward();
         }
@@ -96,6 +109,13 @@ public class AiMovementScript : MonoBehaviour
         MoveBackward();
     }
 
+    public void InheretProperties(RotateToTarget rotate, float rotationSpeed, string creatureType, float targetProximity)
+    {
+        this.rotate = rotate;
+        this.rotationSpeed = rotationSpeed;
+        this.creatureType = creatureType;
+        this.targetProximity = targetProximity;
+    }
     public void TargetAcquired(bool targeting)
     {
         this.targeting = targeting;
@@ -116,5 +136,10 @@ public class AiMovementScript : MonoBehaviour
     private void MoveBackward()
     {
         rb.transform.position -= rb.transform.up * speed * Time.deltaTime;
+    }
+
+    public void getSpeed(float speed)
+    {
+        this.speed = speed;
     }
 }
