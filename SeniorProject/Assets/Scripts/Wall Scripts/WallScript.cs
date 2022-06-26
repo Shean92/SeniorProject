@@ -11,7 +11,7 @@ public class WallScript : MonoBehaviour
 
     private void Start()
     {
-      game = GameObject.FindGameObjectWithTag("GameManager");
+      game = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
