@@ -12,12 +12,14 @@ public class HealthManagerScript : MonoBehaviour
     public bool isVehicle;
     public ParticleSystem explosion;
     public ParticleSystem smoke;
-
     public GameObject zombie;
+    private Upgrades upgrades;
+    public int brains;
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+        upgrades = GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>();
     }
 
     private void Update()
@@ -41,6 +43,7 @@ public class HealthManagerScript : MonoBehaviour
         if (!isZombie && !isVehicle)
         {
             Instantiate(zombie, gameObject.transform.position, gameObject.transform.rotation);
+            upgrades.AddBrains(brains);
         }
         if (isVehicle)
         {
