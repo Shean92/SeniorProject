@@ -22,7 +22,6 @@ public class ZombieAi : MonoBehaviour
     {
         if (fov.canSeeTarget)
         {
-
             target = fov.target;
             move.TargetAcquired(true);
             move.SetTarget(target);

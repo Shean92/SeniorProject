@@ -51,11 +51,13 @@ public class HealthManagerScript : MonoBehaviour
             smoke.Emit(100);
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             this.gameObject.GetComponent<Collider2D>().enabled = false;
-            Destroy(gameObject, 1);
+            gameObject.SetActive(false);
+            // Destroy(gameObject, 1);
         }
         if (gameObject != null && !isVehicle)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            // Destroy(gameObject);
         }
     }
 }
