@@ -8,7 +8,7 @@ public class GameMenuScript : MonoBehaviour
 
  public void NewGame () 
  {
-  SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
+  SceneManager.LoadScene("Game");
  }
  
  public void QuitGame ()
