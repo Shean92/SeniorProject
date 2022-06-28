@@ -337,6 +337,7 @@ MonoBehaviour:
   explosion: {fileID: 0}
   smoke: {fileID: 0}
   zombie: {fileID: 1676422788217897298}
+  brains: 0
 --- !u!114 &2043106477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5373,6 +5374,10 @@ PrefabInstance:
     - target: {fileID: 508889885525906305, guid: dddf8ee0e9e1cdb49847383263597efb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 508889885525906318, guid: dddf8ee0e9e1cdb49847383263597efb, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dddf8ee0e9e1cdb49847383263597efb, type: 3}

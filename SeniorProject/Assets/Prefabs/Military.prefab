@@ -209,7 +209,7 @@ MonoBehaviour:
   explosion: {fileID: 0}
   smoke: {fileID: 0}
   zombie: {fileID: 1676422788217897298, guid: f3aba47d04c1e90419bee57ab1323884, type: 3}
-  brains: 10
+  brains: 2
 --- !u!114 &4698242264653727367
 MonoBehaviour:
   m_ObjectHideFlags: 0

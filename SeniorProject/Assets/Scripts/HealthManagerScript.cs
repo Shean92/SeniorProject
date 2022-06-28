@@ -31,6 +31,20 @@ public class HealthManagerScript : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        if (isZombie)
+        {
+            FindObjectOfType<AudioManager>().Play("Zombie Hurt");
+        }
+        else if (!isVehicle)
+        {
+            FindObjectOfType<AudioManager>().Play("Human Hurt");
+        }
+        else
+        {
+            FindObjectOfType<AudioManager>().Play("Tink");
+        }
+
+
         if (currentHealth <= 0 && !immortal)
         {
             immortal = true;
@@ -42,11 +56,15 @@ public class HealthManagerScript : MonoBehaviour
     {
         if (!isZombie && !isVehicle)
         {
+            FindObjectOfType<AudioManager>().Play("Oh no");
+
             Instantiate(zombie, gameObject.transform.position, gameObject.transform.rotation);
             upgrades.AddBrains(brains);
         }
         if (isVehicle)
         {
+            FindObjectOfType<AudioManager>().Play("Explosion");
+
             explosion.Emit(100);
             smoke.Emit(100);
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;

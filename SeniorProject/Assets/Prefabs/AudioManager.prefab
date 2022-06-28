@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5575106795089116034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5575106795089116032}
+  - component: {fileID: 5575106795089116035}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5575106795089116032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5575106795089116034}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5575106795089116035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5575106795089116034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e22dd2e728178114e94f239700446238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - soundName: Zombie Spit
+    clip: {fileID: 8300000, guid: 676a9f507bbdab44bbb786439ec7a0fe, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: Zombie Hurt
+    clip: {fileID: 8300000, guid: aa78bd9055c6504498e75eab4d50b9ac, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: Zombie Brains
+    clip: {fileID: 8300000, guid: 4ee2f6b9ffb709549abf4c77e4b4ee38, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: Oh no
+    clip: {fileID: 8300000, guid: 0eb7747027eb5d04da808e360bbb1f0d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: Human Hurt
+    clip: {fileID: 8300000, guid: cc77d5d55b7b0e44db501a3d767cda5f, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: Gun Shot
+    clip: {fileID: 8300000, guid: 54fcf424f99fb604eac382bc345b3fc6, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: Helicoptor
+    clip: {fileID: 8300000, guid: 7dd3b103bcc14f54bbde6145ef0e7cc4, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: Tink
+    clip: {fileID: 8300000, guid: dd56f52791c91fc49b4cbe8b180b23d6, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}

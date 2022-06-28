@@ -163,7 +163,11 @@ MonoBehaviour:
   immortal: 0
   isZombie: 0
   zombiefied: 0
+  isVehicle: 0
+  explosion: {fileID: 0}
+  smoke: {fileID: 0}
   zombie: {fileID: 1676422788217897298, guid: f3aba47d04c1e90419bee57ab1323884, type: 3}
+  brains: 1
 --- !u!114 &9130967291069057645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,3 +236,5 @@ MonoBehaviour:
   rotate: {fileID: 9130967291069057647}
   rotationSpeed: 10
   moveSpeed: 4
+  targetProximity: 0
+  chillTime: 0
