@@ -51,22 +51,22 @@ MonoBehaviour:
     source: {fileID: 0}
   - soundName: Zombie Hurt
     clip: {fileID: 8300000, guid: aa78bd9055c6504498e75eab4d50b9ac, type: 3}
-    volume: 1
+    volume: 0.474
     pitch: 1
     source: {fileID: 0}
   - soundName: Zombie Brains
     clip: {fileID: 8300000, guid: 4ee2f6b9ffb709549abf4c77e4b4ee38, type: 3}
-    volume: 1
+    volume: 0.859
     pitch: 1
     source: {fileID: 0}
   - soundName: Oh no
     clip: {fileID: 8300000, guid: 0eb7747027eb5d04da808e360bbb1f0d, type: 3}
-    volume: 1
-    pitch: 1
+    volume: 0.378
+    pitch: 1.6
     source: {fileID: 0}
   - soundName: Human Hurt
     clip: {fileID: 8300000, guid: cc77d5d55b7b0e44db501a3d767cda5f, type: 3}
-    volume: 1
+    volume: 0.468
     pitch: 1
     source: {fileID: 0}
   - soundName: Gun Shot
@@ -81,6 +81,16 @@ MonoBehaviour:
     source: {fileID: 0}
   - soundName: Tink
     clip: {fileID: 8300000, guid: dd56f52791c91fc49b4cbe8b180b23d6, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: Explosion
+    clip: {fileID: 8300000, guid: 373505f7f9426ba479d16bececf3271c, type: 3}
+    volume: 0.56
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: Level Up
+    clip: {fileID: 8300000, guid: b5f27fb1b4ad9994ead4f5b576bb3db9, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}

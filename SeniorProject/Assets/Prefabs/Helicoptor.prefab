@@ -9856,7 +9856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bcba0c7c3e951e4389312b806e54fab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 5
   currentHealth: 0
   immortal: 0
   isZombie: 0
@@ -9865,7 +9865,7 @@ MonoBehaviour:
   explosion: {fileID: 2500151380354256996}
   smoke: {fileID: 4481676875881089755}
   zombie: {fileID: 1676422788217897298, guid: f3aba47d04c1e90419bee57ab1323884, type: 3}
-  brains: 0
+  brains: 6
 --- !u!114 &2275427082447653321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9886,7 +9886,7 @@ MonoBehaviour:
   rotate: {fileID: 2275427082447653325}
   shootingPoint: {fileID: 7262346555305576041}
   rotationSpeed: 5
-  moveSpeed: 2
+  moveSpeed: 4
   timeBetweenShots: 1
   targetProximity: 10
   chillTime: 0

@@ -20,7 +20,7 @@ public class Upgrades : MonoBehaviour
 
     private void Update()
     {
-        if (brainsAmount >= level * 3)
+        if (brainsAmount >= Mathf.Pow(level, 2))
         {
             LevelUp();
         }
@@ -41,7 +41,7 @@ public class Upgrades : MonoBehaviour
         levelUp.Emit(100);
         level++;
         playerHealth.maxHealth++;
-        playerCombat.attackDamage += .5f;
+        playerCombat.attackDamage += .2f;
     }
 
 
