@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
         }  
     }
 
+    public int enemyKillCount;
+
     public void Resume ()
     {
         pauseMenuUI.SetActive(false);

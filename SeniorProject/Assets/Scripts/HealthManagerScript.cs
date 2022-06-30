@@ -15,11 +15,13 @@ public class HealthManagerScript : MonoBehaviour
     public GameObject zombie;
     private Upgrades upgrades;
     public int brains;
+    private GameManager game;
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
         upgrades = GameObject.FindGameObjectWithTag("Upgrades").GetComponent<Upgrades>();
+        game = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     private void Update()
@@ -60,6 +62,7 @@ public class HealthManagerScript : MonoBehaviour
 
             Instantiate(zombie, gameObject.transform.position, gameObject.transform.rotation);
             upgrades.AddBrains(brains);
+            game.enemyKillCount++;
         }
         if (isVehicle)
         {
@@ -69,11 +72,13 @@ public class HealthManagerScript : MonoBehaviour
             smoke.Emit(100);
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             this.gameObject.GetComponent<Collider2D>().enabled = false;
-            Destroy(gameObject, 1);
+            gameObject.SetActive(false);
+            // Destroy(gameObject, 1);
         }
         if (gameObject != null && !isVehicle)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            // Destroy(gameObject);
         }
     }
 }

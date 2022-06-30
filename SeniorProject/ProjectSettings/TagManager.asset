@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - Upgrades
+  - GameManager
   layers:
   - Default
   - TransparentFX
