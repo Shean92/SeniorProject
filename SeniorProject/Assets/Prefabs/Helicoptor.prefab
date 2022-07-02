@@ -168,7 +168,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 10.66
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -659,7 +659,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 4
+    type: 10
     angle: 9.39
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -746,7 +746,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1.75
+      value: 0.0001
       mode: 0
       spread: 0
       speed:
@@ -4919,7 +4919,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 0.47
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5463,7 +5463,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 4
+    type: 10
     angle: 9.9
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -9889,7 +9889,7 @@ MonoBehaviour:
   moveSpeed: 4
   timeBetweenShots: 1
   targetProximity: 10
-  chillTime: 0
+  chillTime: 60
 --- !u!82 &567424671364238014
 AudioSource:
   m_ObjectHideFlags: 0
