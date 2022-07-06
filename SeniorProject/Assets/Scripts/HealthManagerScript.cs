@@ -52,6 +52,7 @@ public class HealthManagerScript : MonoBehaviour
             immortal = true;
             Die();
         }
+
     }
 
     void Die()
