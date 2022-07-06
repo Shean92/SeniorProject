@@ -39,22 +39,23 @@ public class FOVEnemyScript : MonoBehaviour
             {
                 float tempDistanceToTarget;
                 //get current distance, check if last object was further or not, if further then get current object.
-                if(i == 0)
+                if (i == 0)
                 {
                     target = rangeCheck[0].gameObject;
                     distanceToTarget = Vector2.Distance(transform.position, rangeCheck[i].transform.position);
                 }
-                else {
+                else
+                {
                     tempDistanceToTarget = Vector2.Distance(transform.position, rangeCheck[i].transform.position);
-                
-                    if(tempDistanceToTarget <  Vector2.Distance(transform.position, target.transform.position))
+
+                    if (tempDistanceToTarget < Vector2.Distance(transform.position, target.transform.position))
                     {
                         target = rangeCheck[i].gameObject;
                         distanceToTarget = Vector2.Distance(transform.position, rangeCheck[i].transform.position);
-                    }                    
+                    }
                 }
             }
-            
+
             Vector2 directionToTarget = (target.transform.position - transform.position).normalized;
 
             if (Vector2.Angle(transform.up, directionToTarget) < angle / 2)
@@ -76,7 +77,7 @@ public class FOVEnemyScript : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.white;
-        UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.forward, radius);
+        //UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.forward, radius);
 
         Vector3 angle01 = DirectionFromAngle(-transform.eulerAngles.z, -angle / 2);
         Vector3 angle02 = DirectionFromAngle(-transform.eulerAngles.z, angle / 2);
